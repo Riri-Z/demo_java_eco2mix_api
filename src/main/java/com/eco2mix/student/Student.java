@@ -15,10 +15,9 @@ public class Student {
   private String email;
 
   public Student() {
-
   }
 
-  public Student(Long id, String name, LocalDate localDate, Integer age, String email) {
+  public Student(Long id, String name, LocalDate dob, Integer age, String email) {
 
     this.id = id;
     this.name = name;
@@ -68,10 +67,10 @@ public class Student {
   }
 
   @Override
-  public String toString(){
+  public String toString() {
     return String.format(
-      "Student[id=%s, name='%s', dob='%s',age='%s',email='%s']",
-      id, name, dob, age, email);
-      }
+        "Student[id=%s, name='%s', dob='%s',age='%s',email='%s']",
+        id, name, dob, age, email);
+  }
 
 }
