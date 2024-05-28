@@ -11,20 +11,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/eco2mix")
 public class EnergieController {
 
-  @Autowired
-  EnergieRepository energieRepository;
+  private EnergieService energieService;
 
+  public EnergieController(EnergieService energieService) {
+    this.energieService = energieService;
+  }
+
+  /**
+   * Retreive last date available.
+   *
+   * @return ResponseEntity with the date as body, or an error response
+   *
+   */
   @GetMapping("last-date-available")
-  public ResponseEntity<Energie> getLastDateRecordNotNull() {
+  public ResponseEntity<String> getLastDateRecordNotNull() {
 
     try {
-      Energie result = energieRepository.getLastDateRecordNotNull();
-
-      return new ResponseEntity<>(result, HttpStatus.OK);
+      Energie result = energieService.getLastDateAvailable();
+      if (result != null) {
+        return ResponseEntity.ok(result.getDate());
+      } else {
+        return ResponseEntity.notFound().build();
+      }
     } catch (Exception e) {
-      System.out.println(e);
+      System.err.println(e);
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Une erreur s'est produite lors de la récupération de la dernière date disponible.");
     }
-    return null;
   }
 
 }
