@@ -1,15 +1,17 @@
 
 package com.eco2mix.energie;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Generated;
 
-@Generated
+
+@Document(collection = "eco2mix")
 public class Energie {
 
   @Id
-  private Long id;
+  private ObjectId id;
   private String perimetre;
   private String nature;
   private String date;
@@ -44,8 +46,12 @@ public class Energie {
   private BioEnergies bioEnergies;
   private Battery battery;
 
+  public Energie (){
+
+  }
+
   public Energie(
-      Long id, String date,
+      ObjectId id, String date,
       String heure,
       String date_heure,
       Integer taux_co2,
@@ -66,6 +72,8 @@ public class Energie {
     this.tradeEnergy = tradeEnergy;
     this.bioEnergies = bioEnergies;
   }
+
+
 
   public class TradeEnergy {
     private String ech_comm_angleterre;
@@ -105,7 +113,7 @@ public class Energie {
     private String destockage_batterie;
   }
 
-  public Long getId() {
+  public ObjectId getId() {
     return id;
   }
 
@@ -231,6 +239,19 @@ public class Energie {
 
   public Battery getBattery() {
     return battery;
+  }
+
+  @Override
+  public String toString() {
+    return "Energie [id=" + id + ", perimetre=" + perimetre + ", nature=" + nature + ", date=" + date + ", heure="
+        + heure + ", date_heure=" + date_heure + ", consommation=" + consommation + ", prevision_j1=" + prevision_j1
+        + ", prevision_j=" + prevision_j + ", charbon=" + charbon + ", gaz=" + gaz + ", nucleaire=" + nucleaire
+        + ", eolien=" + eolien + ", solaire=" + solaire + ", hydraulique=" + hydraulique + ", pompage=" + pompage
+        + ", bioenergies=" + bioenergies + ", ech_physiques=" + ech_physiques + ", taux_co2=" + taux_co2 + ", gaz_tac="
+        + gaz_tac + ", gaz_cogen=" + gaz_cogen + ", gaz_ccg=" + gaz_ccg + ", gaz_autres=" + gaz_autres
+        + ", hydraulique_fil_eau_eclusee=" + hydraulique_fil_eau_eclusee + ", hydraulique_lacs=" + hydraulique_lacs
+        + ", hydraulique_step_turbinage=" + hydraulique_step_turbinage + ", fioul=" + fioul + ", tradeEnergy="
+        + tradeEnergy + ", bioEnergies=" + bioEnergies + ", battery=" + battery + "]";
   }
 
 }
