@@ -1,7 +1,10 @@
 
 package com.eco2mix.energie;
 
+import java.time.LocalDate;
+
 import org.bson.types.ObjectId;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +17,7 @@ public class Energie {
   private ObjectId id;
   private String perimetre;
   private String nature;
-  private String date;
+  private LocalDate date;
   private String heure;
   private String date_heure;
   private Integer consommation;
@@ -24,8 +27,8 @@ public class Energie {
   private Integer gaz;
   private Integer nucleaire;
   private Integer eolien;
-  private Integer eolien_terrestre;
-  private Integer eolien_offshore;
+  private String eolien_terrestre;
+  private String eolien_offshore;
   private Integer solaire;
   private Integer hydraulique;
   private Integer pompage;
@@ -51,7 +54,8 @@ public class Energie {
   }
 
   public Energie(
-      ObjectId id, String date,
+      ObjectId id,
+      LocalDate date,
       String heure,
       String date_heure,
       Integer taux_co2,
@@ -125,7 +129,7 @@ public class Energie {
     return nature;
   }
 
-  public String getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
@@ -165,11 +169,11 @@ public class Energie {
     return eolien;
   }
 
-  public Integer getEolien_terrestre() {
+  public String getEolien_terrestre() {
     return eolien_terrestre;
   }
 
-  public Integer getEolien_offshore() {
+  public String getEolien_offshore() {
     return eolien_offshore;
   }
 
@@ -240,6 +244,7 @@ public class Energie {
   public Battery getBattery() {
     return battery;
   }
+
 
   @Override
   public String toString() {
