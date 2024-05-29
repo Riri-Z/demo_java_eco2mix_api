@@ -2,11 +2,12 @@ package com.eco2mix.energie;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,6 +17,8 @@ public class EnergieController {
 
   private EnergieService energieService;
 
+  // @Autowired One constructor, so since SPring 4.3, it's automatically
+  // wired
   public EnergieController(EnergieService energieService) {
     this.energieService = energieService;
   }
@@ -26,6 +29,7 @@ public class EnergieController {
    * @return ResponseEntity with the date as body, or an error response
    *
    */
+  @CrossOrigin(origins = "http://localhost:5173")
   @GetMapping("last-date-available")
   public ResponseEntity<?> getLastDateRecordNotNull() {
 
@@ -43,6 +47,7 @@ public class EnergieController {
     }
   }
 
+  @CrossOrigin(origins = "http://localhost:5173")
   @GetMapping("energies")
   public ResponseEntity<?> getAllEnergies(@RequestParam String startDate, @RequestParam String endDate) {
     try {
@@ -52,8 +57,8 @@ public class EnergieController {
     } catch (Exception e) {
       System.err.println(e);
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Une erreur s'est produite lors de la récupération de la dernière date disponible.");
+          .body("Une erreur s'est produite lors de la récupération des données d'énergies.");
     }
-  }
+  };
 
 }

@@ -1,14 +1,12 @@
 package com.eco2mix.energie;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
+
 
 import java.util.List;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 

@@ -4,7 +4,6 @@ package com.eco2mix.energie;
 import java.time.LocalDate;
 
 import org.bson.types.ObjectId;
-import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -43,78 +42,61 @@ public class Energie {
   private Integer hydraulique_lacs;
   private Integer hydraulique_step_turbinage;
   private Integer fioul;
+  private String ech_comm_angleterre;
+  private Integer ech_comm_espagne;
+  private Integer ech_comm_italie;
+  private Integer ech_comm_suisse;
+  private String ech_comm_allemagne_belgique;
 
-  // Sous-classes
-  private TradeEnergy tradeEnergy;
-  private BioEnergies bioEnergies;
-  private Battery battery;
+  public Energie(ObjectId id, String perimetre, String nature, LocalDate date, String heure, String date_heure,
+      Integer consommation, Integer prevision_j1, Integer prevision_j, Integer charbon, Integer gaz, Integer nucleaire,
+      Integer eolien, String eolien_terrestre, String eolien_offshore, Integer solaire, Integer hydraulique,
+      Integer pompage, Integer bioenergies, Integer ech_physiques, Integer taux_co2, Integer gaz_tac, Integer gaz_cogen,
+      Integer gaz_ccg, Integer gaz_autres, Integer hydraulique_fil_eau_eclusee, Integer hydraulique_lacs,
+      Integer hydraulique_step_turbinage, Integer fioul, String ech_comm_angleterre, Integer ech_comm_espagne,
+      Integer ech_comm_italie, Integer ech_comm_suisse, String ech_comm_allemagne_belgique) {
+    this.id = id;
+    this.perimetre = perimetre;
+    this.nature = nature;
+    this.date = date;
+    this.heure = heure;
+    this.date_heure = date_heure;
+    this.consommation = consommation;
+    this.prevision_j1 = prevision_j1;
+    this.prevision_j = prevision_j;
+    this.charbon = charbon;
+    this.gaz = gaz;
+    this.nucleaire = nucleaire;
+    this.eolien = eolien;
+    this.eolien_terrestre = eolien_terrestre;
+    this.eolien_offshore = eolien_offshore;
+    this.solaire = solaire;
+    this.hydraulique = hydraulique;
+    this.pompage = pompage;
+    this.bioenergies = bioenergies;
+    this.ech_physiques = ech_physiques;
+    this.taux_co2 = taux_co2;
+    this.gaz_tac = gaz_tac;
+    this.gaz_cogen = gaz_cogen;
+    this.gaz_ccg = gaz_ccg;
+    this.gaz_autres = gaz_autres;
+    this.hydraulique_fil_eau_eclusee = hydraulique_fil_eau_eclusee;
+    this.hydraulique_lacs = hydraulique_lacs;
+    this.hydraulique_step_turbinage = hydraulique_step_turbinage;
+    this.fioul = fioul;
+    this.ech_comm_angleterre = ech_comm_angleterre;
+    this.ech_comm_espagne = ech_comm_espagne;
+    this.ech_comm_italie = ech_comm_italie;
+    this.ech_comm_suisse = ech_comm_suisse;
+    this.ech_comm_allemagne_belgique = ech_comm_allemagne_belgique;
+  }
 
   public Energie (){
 
   }
 
-  public Energie(
-      ObjectId id,
-      LocalDate date,
-      String heure,
-      String date_heure,
-      Integer taux_co2,
-      Integer fioul,
-      Integer prevision_j,
-      Integer prevision_j1,
-      TradeEnergy tradeEnergy,
-      BioEnergies bioEnergies) {
-
-    this.id = id;
-    this.date = date;
-    this.heure = heure;
-    this.date_heure = date_heure;
-    this.taux_co2 = taux_co2;
-    this.fioul = fioul;
-    this.prevision_j = prevision_j;
-    this.prevision_j1 = prevision_j1;
-    this.tradeEnergy = tradeEnergy;
-    this.bioEnergies = bioEnergies;
-  }
-
-
-
-  public class TradeEnergy {
-    private String ech_comm_angleterre;
-    private Integer ech_comm_espagne;
-    private Integer ech_comm_italie;
-    private Integer ech_comm_suisse;
-    private String ech_comm_allemagne_belgique;
-
-    public TradeEnergy() {
-    }
-
-    public TradeEnergy(String ech_comm_angleterre, Integer ech_comm_espagne,
-        Integer ech_comm_italie,
-        Integer ech_comm_suisse,
-        String ech_comm_allemagne_belgique) {
-      this.ech_comm_allemagne_belgique = ech_comm_allemagne_belgique;
-      this.ech_comm_espagne = ech_comm_espagne;
-      this.ech_comm_italie = ech_comm_italie;
-      this.ech_comm_suisse = ech_comm_suisse;
-      this.ech_comm_allemagne_belgique = ech_comm_allemagne_belgique;
-    }
-
-    public TradeEnergy getTradeEnergy() {
-      return tradeEnergy;
-    }
-
-  }
-
-  public static class BioEnergies {
-    private Integer bioenergies_dechets;
-    private Integer bioenergies_biomasse;
-    private Integer bioenergies_biogaz;
-  }
-
-  public static class Battery {
-    private String stockage_batterie;
-    private String destockage_batterie;
+  public LocalDate getDate() {
+    return date;
   }
 
   public ObjectId getId() {
@@ -127,10 +109,6 @@ public class Energie {
 
   public String getNature() {
     return nature;
-  }
-
-  public LocalDate getDate() {
-    return date;
   }
 
   public String getHeure() {
@@ -233,30 +211,39 @@ public class Energie {
     return fioul;
   }
 
-  public TradeEnergy getTradeEnergy() {
-    return tradeEnergy;
+  public String getEch_comm_angleterre() {
+    return ech_comm_angleterre;
   }
 
-  public BioEnergies getBioEnergies() {
-    return bioEnergies;
+  public Integer getEch_comm_espagne() {
+    return ech_comm_espagne;
   }
 
-  public Battery getBattery() {
-    return battery;
+  public Integer getEch_comm_italie() {
+    return ech_comm_italie;
   }
 
+  public Integer getEch_comm_suisse() {
+    return ech_comm_suisse;
+  }
+
+  public String getEch_comm_allemagne_belgique() {
+    return ech_comm_allemagne_belgique;
+  }
 
   @Override
   public String toString() {
     return "Energie [id=" + id + ", perimetre=" + perimetre + ", nature=" + nature + ", date=" + date + ", heure="
         + heure + ", date_heure=" + date_heure + ", consommation=" + consommation + ", prevision_j1=" + prevision_j1
         + ", prevision_j=" + prevision_j + ", charbon=" + charbon + ", gaz=" + gaz + ", nucleaire=" + nucleaire
-        + ", eolien=" + eolien + ", solaire=" + solaire + ", hydraulique=" + hydraulique + ", pompage=" + pompage
-        + ", bioenergies=" + bioenergies + ", ech_physiques=" + ech_physiques + ", taux_co2=" + taux_co2 + ", gaz_tac="
-        + gaz_tac + ", gaz_cogen=" + gaz_cogen + ", gaz_ccg=" + gaz_ccg + ", gaz_autres=" + gaz_autres
+        + ", eolien=" + eolien + ", eolien_terrestre=" + eolien_terrestre + ", eolien_offshore=" + eolien_offshore
+        + ", solaire=" + solaire + ", hydraulique=" + hydraulique + ", pompage=" + pompage + ", bioenergies="
+        + bioenergies + ", ech_physiques=" + ech_physiques + ", taux_co2=" + taux_co2 + ", gaz_tac=" + gaz_tac
+        + ", gaz_cogen=" + gaz_cogen + ", gaz_ccg=" + gaz_ccg + ", gaz_autres=" + gaz_autres
         + ", hydraulique_fil_eau_eclusee=" + hydraulique_fil_eau_eclusee + ", hydraulique_lacs=" + hydraulique_lacs
-        + ", hydraulique_step_turbinage=" + hydraulique_step_turbinage + ", fioul=" + fioul + ", tradeEnergy="
-        + tradeEnergy + ", bioEnergies=" + bioEnergies + ", battery=" + battery + "]";
+        + ", hydraulique_step_turbinage=" + hydraulique_step_turbinage + ", fioul=" + fioul + ", ech_comm_angleterre="
+        + ech_comm_angleterre + ", ech_comm_espagne=" + ech_comm_espagne + ", ech_comm_italie=" + ech_comm_italie
+        + ", ech_comm_suisse=" + ech_comm_suisse + ", ech_comm_allemagne_belgique=" + ech_comm_allemagne_belgique + "]";
   }
 
 }
