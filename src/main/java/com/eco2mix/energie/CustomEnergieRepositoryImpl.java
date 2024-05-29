@@ -36,8 +36,7 @@ class CustomEnergieRepositoryImpl implements CustomEnergieRepository {
     // Using new because we're chaining  multiple condition with and
     Criteria criteria = new Criteria().andOperator(
       Criteria.where("date").gte(start),
-      Criteria.where("date").lte(end),
-      Criteria.where("consommation").ne(null));
+      Criteria.where("date").lte(end));
 
     Query query = new Query(criteria);
 
