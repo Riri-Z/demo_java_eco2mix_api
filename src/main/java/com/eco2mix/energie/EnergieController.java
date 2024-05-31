@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping("/eco2mix")
+@RequestMapping("/api")
 public class EnergieController {
 
   private EnergieService energieService;
@@ -40,8 +40,8 @@ public class EnergieController {
       } else {
         return ResponseEntity.notFound().build();
       }
-    } catch (Exception e) {
-      System.err.println(e);
+    } catch (Exception error) {
+      System.err.println(error);
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
           .body("Une erreur s'est produite lors de la récupération de la dernière date disponible.");
     }
@@ -54,11 +54,13 @@ public class EnergieController {
 
       List<Energie> result = energieService.getAllEnergiesByDate(startDate, endDate);
       return ResponseEntity.ok(result);
-    } catch (Exception e) {
-      System.err.println(e);
+    } catch (Exception error) {
+      System.err.println(error);
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
           .body("Une erreur s'est produite lors de la récupération des données d'énergies.");
     }
   };
+
+
 
 }

@@ -7,8 +7,6 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-
 @Document(collection = "eco2mix")
 public class Energie {
 
@@ -47,6 +45,9 @@ public class Energie {
   private Integer ech_comm_italie;
   private Integer ech_comm_suisse;
   private String ech_comm_allemagne_belgique;
+
+  public Energie() {
+  }
 
   public Energie(ObjectId id, String perimetre, String nature, LocalDate date, String heure, String date_heure,
       Integer consommation, Integer prevision_j1, Integer prevision_j, Integer charbon, Integer gaz, Integer nucleaire,
@@ -89,10 +90,6 @@ public class Energie {
     this.ech_comm_italie = ech_comm_italie;
     this.ech_comm_suisse = ech_comm_suisse;
     this.ech_comm_allemagne_belgique = ech_comm_allemagne_belgique;
-  }
-
-  public Energie (){
-
   }
 
   public LocalDate getDate() {
