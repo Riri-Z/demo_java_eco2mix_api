@@ -11,9 +11,9 @@ public class ConsumptionService {
   @Autowired
   ConsumptionRepository consumptionRepository;
 
-
   public List<Consumption> getConsumption(String date) {
-    return consumptionRepository.findByDate( date);
+
+    return consumptionRepository.getConsumptionByDate(date);
   };
 
 }

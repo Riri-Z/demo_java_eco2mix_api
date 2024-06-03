@@ -18,8 +18,4 @@ public class EnergieService {
   public List<Energie> getAllEnergiesByDate(String start, String end) {
     return energieRepository.getAllEnergiesByDate(start, end);
   }
-
-  public List<Energie> getConsumption (String date){
-    return energieRepository.getConsumptionByDate(date);
-  }
 }
