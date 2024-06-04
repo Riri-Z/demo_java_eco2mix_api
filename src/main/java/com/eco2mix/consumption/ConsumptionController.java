@@ -1,20 +1,19 @@
 package com.eco2mix.consumption;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
+import java.util.logging.Logger;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
 public class ConsumptionController {
+  Logger logger = Logger.getLogger(getClass().getName());
 
   private ConsumptionService consumptionService;
 
@@ -24,18 +23,9 @@ public class ConsumptionController {
 
   @CrossOrigin(origins = "http://localhost:5173")
   @GetMapping("consumption")
-  public ResponseEntity<?> getConsumption(@RequestParam String date) throws Exception {
-
-    try {
+  public ResponseEntity<List<Consumption>> getConsumption(@RequestParam String date)  {
       List<Consumption> result = consumptionService.getConsumption(date);
       return ResponseEntity.ok(result);
-    } catch (Exception error) {
-      System.err.println(error);
-
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Une erreur s'est produite lors de la récupération de la route /consumption.");
-    }
-
   }
 
 }

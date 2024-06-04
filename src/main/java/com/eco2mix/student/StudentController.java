@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("api/v1/student")
 public class StudentController {
 
-  private final StudentService studentService; //Reference à studentService
+  private final StudentService studentService;
 
   public StudentController(StudentService studentService) {
-    //On utilise la réference dans le controller
-    // Pour éviter     this.studentService = new studentService();
-    //avec Java 17 et Spring 4.3+, on peut omettre @Autowired sur les constructeurs si la classe n'a qu'un seul constructeur. Pour l'injection par champ ou par setter, @Autowired est toujours nécessaire.
     this.studentService = studentService;
   }
 

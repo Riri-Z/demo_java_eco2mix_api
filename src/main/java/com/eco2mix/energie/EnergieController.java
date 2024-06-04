@@ -17,8 +17,6 @@ public class EnergieController {
 
   private EnergieService energieService;
 
-  // @Autowired One constructor, so since SPring 4.3, it's automatically
-  // wired
   public EnergieController(EnergieService energieService) {
     this.energieService = energieService;
   }
