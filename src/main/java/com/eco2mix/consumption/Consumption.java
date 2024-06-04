@@ -10,7 +10,7 @@ public class Consumption {
 
   @Id
   @Field("_id")
-  private String id;
+  private ObjectId id;
 
   @Field("code_insee_region")
   private String codeInseeRegion;
@@ -27,7 +27,7 @@ public class Consumption {
   @Field("consommation_brute_electricite_rte")
   private Integer consommationBruteElectriciteRte;
 
-  public Consumption(String id, String codeInseeRegion, String date, String region,
+  public Consumption(ObjectId id, String codeInseeRegion, String date, String region,
       Integer consommationBruteGazTotale, Integer consommationBruteElectriciteRte) {
     this.id = id;
     this.codeInseeRegion = codeInseeRegion;
@@ -57,7 +57,7 @@ public class Consumption {
     return date;
   }
 
-  public String getId() {
+  public ObjectId getId() {
     return id;
   }
 
