@@ -27,14 +27,25 @@ public class Consumption {
   @Field("consommation_brute_electricite_rte")
   private Integer consommationBruteElectriciteRte;
 
+  private String regionCodeISO;
+
+  public String getRegionCodeISO() {
+    return regionCodeISO;
+  }
+
+  public void setRegionCodeISO(String regionCodeISO) {
+    this.regionCodeISO = regionCodeISO;
+  }
+
   public Consumption(ObjectId id, String codeInseeRegion, String date, String region,
-      Integer consommationBruteGazTotale, Integer consommationBruteElectriciteRte) {
+      Integer consommationBruteGazTotale, Integer consommationBruteElectriciteRte, String regionCodeISO) {
     this.id = id;
     this.codeInseeRegion = codeInseeRegion;
     this.date = date;
     this.region = region;
     this.consommationBruteGazTotale = consommationBruteGazTotale;
     this.consommationBruteElectriciteRte = consommationBruteElectriciteRte;
+    this.regionCodeISO = regionCodeISO;
   }
 
   public String getCodeInseeRegion() {
