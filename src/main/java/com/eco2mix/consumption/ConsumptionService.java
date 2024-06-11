@@ -29,4 +29,10 @@ public class ConsumptionService {
     return consumptions;
   }
 
+  public List<Consumption> getDateRangeAvailable() {
+
+    return consumptionRepository.getDateRangeAvailable();
+
+  }
+
 }

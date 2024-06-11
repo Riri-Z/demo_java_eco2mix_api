@@ -1,5 +1,6 @@
 package com.eco2mix.energie;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -25,16 +26,16 @@ public class EnergieController {
    * @return ResponseEntity with the date as body, or an error response
    *
    */
-  @CrossOrigin(origins = "http://localhost:5173")
+  @CrossOrigin
   @GetMapping("last-date-available")
-  public ResponseEntity<?> getLastDateRecordNotNull() {
+  public ResponseEntity<LocalDate> getLastDateRecordNotNull() {
     Energie result = energieService.getLastRecordAvailableNotNull();
     return ResponseEntity.ok(result.getDate());
   }
 
-  @CrossOrigin(origins = "http://localhost:5173")
+  @CrossOrigin
   @GetMapping("energies")
-  public ResponseEntity<?> getAllEnergies(@RequestParam String startDate, @RequestParam String endDate) {
+  public ResponseEntity<List<Energie>> getAllEnergies(@RequestParam String startDate, @RequestParam String endDate) {
 
     List<Energie> result = energieService.getAllEnergiesByDate(startDate, endDate);
     return ResponseEntity.ok(result);

@@ -21,11 +21,18 @@ public class ConsumptionController {
     this.consumptionService = consumptionService;
   }
 
-  @CrossOrigin(origins = "http://localhost:5173")
+  @CrossOrigin
   @GetMapping("consumption")
-  public ResponseEntity<List<Consumption>> getConsumption(@RequestParam String date)  {
-      List<Consumption> result = consumptionService.getConsumption(date);
-      return ResponseEntity.ok(result);
+  public ResponseEntity<List<Consumption>> getConsumption(@RequestParam String date) {
+    List<Consumption> result = consumptionService.getConsumption(date);
+    return ResponseEntity.ok(result);
   }
 
+  @CrossOrigin
+  @GetMapping("consumption/date-range-available")
+  public ResponseEntity<List<Consumption>> getFirstAndLastAvailableDdocument() {
+    List<Consumption> result = consumptionService.getDateRangeAvailable();
+
+    return ResponseEntity.ok(result);
+  }
 }
