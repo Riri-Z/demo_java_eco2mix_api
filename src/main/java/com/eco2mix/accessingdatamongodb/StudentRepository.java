@@ -10,4 +10,4 @@ public interface StudentRepository extends MongoRepository<Student, Long> {
 
   public Student findByName(String name);
   public Student findByEmail(String email);
-};
+}

@@ -34,6 +34,13 @@ public class EnergieController {
   }
 
   @CrossOrigin
+  @GetMapping("date-range-available")
+  public ResponseEntity<List<Energie>> getFirstLastDocument() {
+    List<Energie> result = energieService.getFirstAndLastEnergie();
+    return ResponseEntity.ok(result);
+  }
+
+  @CrossOrigin
   @GetMapping("energies")
   public ResponseEntity<List<Energie>> getAllEnergies(@RequestParam String startDate, @RequestParam String endDate) {
 

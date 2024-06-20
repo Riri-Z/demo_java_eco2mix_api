@@ -40,7 +40,8 @@ class CustomConsumptionRepositoryImpl implements CustomConsumptionRepository {
     GroupOperation groupStage = Aggregation.group(INSEE_FIELD, REGION_FIELD).sum(CONSOMMATION_BRUT_GAZ)
         .as(CONSOMMATION_BRUT_GAZ)
         .sum(CONSOMMATION_BRUT_ELECTRICITE).as(CONSOMMATION_BRUT_ELECTRICITE).first(INSEE_FIELD)
-        .as(INSEE_FIELD);
+        .as(INSEE_FIELD)
+        .first(DATE_FIELD).as(DATE_FIELD);
 
     // Keep only needed field
     ProjectionOperation projectStage = Aggregation.project(INSEE_FIELD, CONSOMMATION_BRUT_GAZ,

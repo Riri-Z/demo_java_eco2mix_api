@@ -15,6 +15,10 @@ public class EnergieService {
     this.energieRepository = energieRepository;
   }
 
+  public List<Energie> getFirstAndLastEnergie () {
+    return  energieRepository.getFirstAndLastDocumentNotNull();
+  }
+
   public Energie getLastRecordAvailableNotNull() {
     Energie energie = energieRepository.getLastDateRecordNotNull();
     if (energie == null) {
