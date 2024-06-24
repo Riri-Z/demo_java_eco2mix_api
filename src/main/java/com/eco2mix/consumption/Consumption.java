@@ -72,4 +72,16 @@ public class Consumption {
     return id;
   }
 
+  @Override
+  public String toString() {
+    return "Consumption{" +
+        "id=" + id +
+        ", codeInseeRegion='" + codeInseeRegion + '\'' +
+        ", date='" + date + '\'' +
+        ", region='" + region + '\'' +
+        ", consommationBruteGazTotale=" + consommationBruteGazTotale +
+        ", consommationBruteElectriciteRte=" + consommationBruteElectriciteRte +
+        ", regionCodeISO='" + regionCodeISO + '\'' +
+        '}';
+  }
 }
